@@ -1,10 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="da">
 <head>
-    <title>Aabyhøj IF Oldboys</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aabyhøj IF Oldboys</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+}
+
+header {
+    background: #0a6d2a;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+nav {
+    background: #084f1f;
+    padding: 12px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #0a6d2a;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #666;
+}
+</style>
 </head>
+
 <body>
-    <h1>Aabyhøj IF Oldboys</h1>
-    <p>Kampstatistik, topscorere og bødekasse.</p>
+
+<header>
+    <h1>⚽ Aabyhøj IF Oldboys</h1>
+    <p>Kampstatistik • MoM • Topscorer • Bødekasse</p>
+</header>
+
+<nav>
+    #Forside</a>
+    <a href="#">Kampetatistik</a>
+    #Bødekasse</a>
+</nav>
+
+<div class="container">
+
+    <div class="card-grid">
+
+        <div class="card">
+            <h2>📅 Næste kamp</h2>
+            <p>Aabyhøj IF - VRI</p>
+            <p>20. august 2026</p>
+        </div>
+
+        <div class="card">
+            <h2>🏆 Seneste MoM</h2>
+            <p>Rasmus Jensen</p>
+            <p>8 stemmer</p>
+        </div>
+
+        <div class="card">
+            <h2>⚽ Topscorer</h2>
+            <p>Rasmus Jensen</p>
+            <p>12 mål</p>
+        </div>
+
+        <div class="card">
+            <h2>💰 Bødekasse</h2>
+            <p>Samlet saldo</p>
+            <p>1.250 kr.</p>
+        </div>
+
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+        <h2>Seneste kamp</h2>
+        <p><strong>Lystrup IF 1 - 2 Aabyhøj IF</strong></p>
+
+        <h3>Målscorere</h3>
+        <ul>
+            <li>Rasmus Jensen</li>
+            <li>Jann Bundgaard</li>
+        </ul>
+
+        <h3>MoM</h3>
+        <p>🏆 Rasmus Jensen</p>
+    </div>
+
+</div>
+
+<footer>
+    Aabyhøj IF Oldboys © 2026
+</footer>
+
 </body>
 </html>
