@@ -17,7 +17,7 @@ jobs:
 
       - name: Download topscorer
         run: |
-          curl -L "https://duerne.sharepoint.com/:u:/s/AabyhojIF1Oldboys40aar/IQAVaY-SbkBWS7zrEgYU4szFAYw-k1tquCoRGGg9uEn63uM" -o data/topscorer.json
+          curl -L "https://duerne.sharepoint.com/sites/AabyhojIF1Oldboys40aar/Delte%20dokumenter/json/topscorer.json" -o data/topscorer.json
 
       - name: Commit if changed
         run: |
