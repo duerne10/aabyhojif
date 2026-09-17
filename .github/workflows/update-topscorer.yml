@@ -6,24 +6,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  up*ate:
+  update:
     runs-on: ubuntu-latest
 
- *  steps:
-      - uses: actions/che*kout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-      - name: Download to*scorer
+      - name: Download topscorer
         run: |
-          cu*l -L "https://duerne.sharepoint.com/:u:/s/AabyhojIF1Oldboys40aar/IQAVaY-SbkBWS7zrEgYU4szFAYw-k1tquCoRGGg9uEn63uM" -o data/*opscorer.json
+          curl -L "https://duerne.sharepoint.com/:u:/s/AabyhojIF1Oldboys40aar/IQAVaY-SbkBWS7zrEgYU4szFAYw-k1tquCoRGGg9uEn63uM" -o data/topscorer.json
 
-      - name: Commi* if changed
+      - name: Commit if changed
         run: |
-       *  git config user.name "GitHub Act*on"
-          git config user.emai* "action@github.com"
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
 
-          gi* add data/topscorer.json
+          git add data/topscorer.json
 
-        * git diff --staged --quiet || (
-  *         git commit -m "Update top*corer"
+          git diff --staged --quiet || (
+            git commit -m "Update topscorer"
             git push
-      *   )
+          )
