@@ -17,7 +17,7 @@ jobs:
 
       - name: Download topscorer
         run: |
-          curl -L "DIN_SHAREPOINT_URL" -o data/topscorer.json
+          curl -L "https://duerne.sharepoint.com/:u:/s/AabyhojIF1Oldboys40aar/IQAVaY-SbkBWS7zrEgYU4szFAYw-k1tquCoRGGg9uEn63uM" -o data/topscorer.json
 
       - name: Commit if changed
         run: |
