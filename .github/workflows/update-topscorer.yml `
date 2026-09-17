@@ -1,0 +1,29 @@
+name: Update Topscorer
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  up*ate:
+    runs-on: ubuntu-latest
+
+ *  steps:
+      - uses: actions/che*kout@v4
+
+      - name: Download to*scorer
+        run: |
+          cu*l -L "DIN_SHAREPOINT_URL" -o data/*opscorer.json
+
+      - name: Commi* if changed
+        run: |
+       *  git config user.name "GitHub Act*on"
+          git config user.emai* "action@github.com"
+
+          gi* add data/topscorer.json
+
+        * git diff --staged --quiet || (
+  *         git commit -m "Update top*corer"
+            git push
+      *   )
