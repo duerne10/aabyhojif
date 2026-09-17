@@ -14,7 +14,7 @@ jobs:
 
       - name: Download to*scorer
         run: |
-          cu*l -L "DIN_SHAREPOINT_URL" -o data/*opscorer.json
+          cu*l -L "https://duerne.sharepoint.com/:u:/s/AabyhojIF1Oldboys40aar/IQAVaY-SbkBWS7zrEgYU4szFAYw-k1tquCoRGGg9uEn63uM" -o data/*opscorer.json
 
       - name: Commi* if changed
         run: |
