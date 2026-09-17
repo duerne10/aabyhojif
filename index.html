@@ -75,10 +75,10 @@ footer {
 </header>
 
 <nav>
-<a href=index.html>Forside</a>
-<a href=kampe.html>Kampe</a>
-<a href=statistik.html>Statistik</a>
-<a href=bodekasse.html>Bødekasse</a>
+<a href="index.html">Forside</a>
+<a href="kampe.html">Kampe</a>
+<a href="statistik.html">Statistik</a>
+<a href="bodekasse.html">Bødekasse</a>
 </nav>
 
 <div class="container">
@@ -99,8 +99,7 @@ footer {
 
         <div class="card">
             <h2>⚽ Topscorer</h2>
-            <p>Rasmus Jensen</p>
-            <p>12 mål</p>
+            <div id="topscorer">Indlæser...</div>
         </div>
 
         <div class="card">
@@ -130,6 +129,26 @@ footer {
 <footer>
     Aabyhøj IF Oldboys © 2026
 </footer>
+
+<script>
+fetch("data/topscorer.json")
+  .then(response => response.json())
+  .then(data => {
+
+    if (data.length > 0) {
+
+      const topscorer = data.sort((a, b) => b.maal - a.maal)[0];
+
+      document.getElementById("topscorer").innerHTML =
+        "<p>" + topscorer.spiller + "</p>" +
+        "<p>" + topscorer.maal + " mål</p>";
+    }
+  })
+  .catch(error => {
+    document.getElementById("topscorer").innerHTML =
+      "<p>Kunne ikke hente data</p>";
+  });
+</script>
 
 </body>
 </html>
