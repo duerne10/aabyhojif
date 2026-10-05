@@ -69,6 +69,18 @@ tr:nth-child(even) {
 .position {
     font-weight: bold;
 }
+
+.first {
+    background-color: #fff8dc;
+}
+
+.second {
+    background-color: #f2f2f2;
+}
+
+.third {
+    background-color: #f8e5d0;
+}
 </style>
 </head>
 
@@ -76,26 +88,29 @@ tr:nth-child(even) {
 
 <header>
     <h1>⚽ Topscorerliste</h1>
+    <p>Flest mål i sæsonen</p>
 </header>
 
 <div class="container">
 
-<a href="index.html" class="back-button">← Tilbage til forsiden</a>
+    <a href="index.html" class="back-button">← Tilbage til forsiden</a>
 
-<table>
-    <thead>
-        <tr>
-            <th>Placering</th>
-            <th>Spiller</th>
-            <th>Mål</th>
-        </tr>
-    </thead>
-    <tbody id="topscorerliste"></tbody>
-</table>
+    <table>
+        <thead>
+            <tr>
+                <th>Placering</th>
+                <th>Spiller</th>
+                <th>Mål</th>
+            </tr>
+        </thead>
+
+        <tbody id="topscorerliste"></tbody>
+    </table>
 
 </div>
 
 <script>
+
 fetch("data/topscorer.json")
   .then(response => response.json())
   .then(data => {
@@ -106,9 +121,27 @@ fetch("data/topscorer.json")
 
     data.forEach((spiller, index) => {
 
+      let medalje = "";
+      let rowClass = "";
+
+      if (index === 0) {
+        medalje = "🥇";
+        rowClass = "first";
+      }
+
+      if (index === 1) {
+        medalje = "🥈";
+        rowClass = "second";
+      }
+
+      if (index === 2) {
+        medalje = "🥉";
+        rowClass = "third";
+      }
+
       html += `
-        <tr>
-          <td class="position">${index + 1}</td>
+        <tr class="${rowClass}">
+          <td class="position">${medalje} ${index + 1}</td>
           <td>${spiller.spiller}</td>
           <td>${spiller.maal}</td>
         </tr>
@@ -116,8 +149,14 @@ fetch("data/topscorer.json")
     });
 
     document.getElementById("topscorerliste").innerHTML = html;
+  })
+  .catch(error => {
+      document.getElementById("topscorerliste").innerHTML =
+      "<tr><td colspan='3'>Kunne ikke hente data</td></tr>";
   });
+
 </script>
 
 </body>
 </html>
+``
