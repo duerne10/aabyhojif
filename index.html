@@ -81,7 +81,7 @@ footer {
 
 <header>
     <h1>⚽ Aabyhøj IF Oldboys</h1>
-    <p>Kampstatistik • MoM • Topscorer • Bødekasse</p>
+    <p>Kampstatistik • Kampens Spiller • Topscorer • Bødekasse</p>
 </header>
 
 <nav>
@@ -101,7 +101,14 @@ footer {
             <p>20. august 2026</p>
         </div>
 
-        <a href="stemmer.html" class="card-link">
+        <a href="mom.html" class="card-link">
+            <div class="card">
+                <h2>🏆 Kampens Spiller</h2>
+                <div id="mom">Indlæser...</div>
+            </div>
+        </a>
+
+        stemmer.html
             <div class="card">
                 <h2>🗳️ Flest stemmer</h2>
                 <div id="stemmer">Indlæser...</div>
@@ -135,7 +142,7 @@ footer {
             <li>Jann Bundgaard</li>
         </ul>
 
-        <h3>MoM</h3>
+        <h3>Kampens Spiller</h3>
 
         <p>🏆 Rasmus Jensen</p>
     </div>
@@ -147,6 +154,29 @@ footer {
 </footer>
 
 <script>
+
+/* KAMPENS SPILLER */
+
+fetch("data/mom.json")
+  .then(response => response.json())
+  .then(data => {
+
+    if (data.length > 0) {
+
+      const vinder =
+        data.sort((a, b) => b.mom - a.mom)[0];
+
+      document.getElementById("mom").innerHTML =
+        "<p>" + vinder.spiller + "</p>" +
+        "<p>" + vinder.mom + " titler</p>";
+    }
+  })
+  .catch(error => {
+
+    document.getElementById("mom").innerHTML =
+      "<p>Kunne ikke hente data</p>";
+  });
+
 
 /* TOPSCORER */
 
@@ -197,4 +227,3 @@ fetch("data/stemmer.json")
 
 </body>
 </html>
-``
