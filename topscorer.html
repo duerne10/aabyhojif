@@ -26,12 +26,28 @@ header {
     padding: 20px;
 }
 
+.back-button {
+    display: inline-block;
+    background: #0a6d2a;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.back-button:hover {
+    background: #084f1f;
+}
+
 table {
     width: 100%;
     background: white;
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 th {
@@ -49,6 +65,10 @@ td {
 tr:nth-child(even) {
     background: #f8f8f8;
 }
+
+.position {
+    font-weight: bold;
+}
 </style>
 </head>
 
@@ -60,6 +80,8 @@ tr:nth-child(even) {
 
 <div class="container">
 
+<a href="index.html" class="back-button">← Tilbage til forsiden</a>
+
 <table>
     <thead>
         <tr>
@@ -68,28 +90,25 @@ tr:nth-child(even) {
             <th>Mål</th>
         </tr>
     </thead>
-
-    <tbody id="topscorerliste">
-    </tbody>
+    <tbody id="topscorerliste"></tbody>
 </table>
 
 </div>
 
 <script>
-
 fetch("data/topscorer.json")
   .then(response => response.json())
   .then(data => {
 
-    data.sort((a,b) => b.maal - a.maal);
+    data.sort((a, b) => b.maal - a.maal);
 
     let html = "";
 
-    data.forEach((spiller,index) => {
+    data.forEach((spiller, index) => {
 
       html += `
         <tr>
-          <td>${index + 1}</td>
+          <td class="position">${index + 1}</td>
           <td>${spiller.spiller}</td>
           <td>${spiller.maal}</td>
         </tr>
@@ -98,7 +117,6 @@ fetch("data/topscorer.json")
 
     document.getElementById("topscorerliste").innerHTML = html;
   });
-
 </script>
 
 </body>
