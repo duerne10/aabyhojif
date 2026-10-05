@@ -58,6 +58,16 @@ nav a {
     color: #0a6d2a;
 }
 
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-link:hover .card {
+    transform: translateY(-2px);
+    transition: 0.2s;
+}
+
 footer {
     text-align: center;
     padding: 20px;
@@ -75,10 +85,10 @@ footer {
 </header>
 
 <nav>
-<a href="index.html">Forside</a>
-<a href="kampe.html">Kampe</a>
-<a href="statistik.html">Statistik</a>
-<a href="bodekasse.html">Bødekasse</a>
+    <a href="index.html">Forside</a>
+    <a href="kampe.html">Kampe</a>
+    <a href="statistik.html">Statistik</a>
+    <a href="bodekasse.html">Bødekasse</a>
 </nav>
 
 <div class="container">
@@ -91,39 +101,42 @@ footer {
             <p>20. august 2026</p>
         </div>
 
-        <div class="card">
-            <h2>🏆 Seneste MoM</h2>
-            <p>Rasmus Jensen</p>
-            <p>8 stemmer</p>
-        </div>
-        
-        <a href="topscorer.html" style="text-decoration:none; color:inherit;">
+        stemmer.html
+            <div class="card">
+                <h2>🗳️ Flest stemmer</h2>
+                <div id="stemmer">Indlæser...</div>
+            </div>
+        </a>
+
+        <a href="topscorer.html" class="card-link">
             <div class="card">
                 <h2>⚽ Topscorer</h2>
                 <div id="topscorer">Indlæser...</div>
             </div>
         </a>
-        
+
         <div class="card">
             <h2>💰 Bødekasse</h2>
             <p>Samlet saldo</p>
             <p>1.250 kr.</p>
         </div>
 
-
     </div>
 
     <div class="card" style="margin-top:20px;">
         <h2>Seneste kamp</h2>
+
         <p><strong>Lystrup IF 1 - 2 Aabyhøj IF</strong></p>
 
         <h3>Målscorere</h3>
+
         <ul>
             <li>Rasmus Jensen</li>
             <li>Jann Bundgaard</li>
         </ul>
 
         <h3>MoM</h3>
+
         <p>🏆 Rasmus Jensen</p>
     </div>
 
@@ -134,13 +147,17 @@ footer {
 </footer>
 
 <script>
+
+/* TOPSCORER */
+
 fetch("data/topscorer.json")
   .then(response => response.json())
   .then(data => {
 
     if (data.length > 0) {
 
-      const topscorer = data.sort((a, b) => b.maal - a.maal)[0];
+      const topscorer =
+        data.sort((a, b) => b.maal - a.maal)[0];
 
       document.getElementById("topscorer").innerHTML =
         "<p>" + topscorer.spiller + "</p>" +
@@ -148,10 +165,36 @@ fetch("data/topscorer.json")
     }
   })
   .catch(error => {
+
     document.getElementById("topscorer").innerHTML =
       "<p>Kunne ikke hente data</p>";
   });
+
+
+/* STEMMER */
+
+fetch("data/stemmer.json")
+  .then(response => response.json())
+  .then(data => {
+
+    if (data.length > 0) {
+
+      const vinder =
+        data.sort((a, b) => b.stemmer - a.stemmer)[0];
+
+      document.getElementById("stemmer").innerHTML =
+        "<p>" + vinder.spiller + "</p>" +
+        "<p>" + vinder.stemmer + " stemmer</p>";
+    }
+  })
+  .catch(error => {
+
+    document.getElementById("stemmer").innerHTML =
+      "<p>Kunne ikke hente data</p>";
+  });
+
 </script>
 
 </body>
 </html>
+``
