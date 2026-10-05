@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topscorerliste</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+}
+
+header {
+    background: #0a6d2a;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background: #0a6d2a;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background: #f8f8f8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚽ Topscorerliste</h1>
+</header>
+
+<div class="container">
+
+<table>
+    <thead>
+        <tr>
+            <th>Placering</th>
+            <th>Spiller</th>
+            <th>Mål</th>
+        </tr>
+    </thead>
+
+    <tbody id="topscorerliste">
+    </tbody>
+</table>
+
+</div>
+
+<script>
+
+fetch("data/topscorer.json")
+  .then(response => response.json())
+  .then(data => {
+
+    data.sort((a,b) => b.maal - a.maal);
+
+    let html = "";
+
+    data.forEach((spiller,index) => {
+
+      html += `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${spiller.spiller}</td>
+          <td>${spiller.maal}</td>
+        </tr>
+      `;
+    });
+
+    document.getElementById("topscorerliste").innerHTML = html;
+  });
+
+</script>
+
+</body>
+</html>
